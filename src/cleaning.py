@@ -42,7 +42,7 @@ def high_level_filter_arapahoe_county_males():
 def remove_zeroes_and_nans():
     data = remove_uneeded_columns(asthma_data)
     # Removes 8,448 rows where RATE was zero
-    minus_rate_zero = data[data["RATE"] != 0] # Removes 8448 rows
+    minus_rate_zero = data[data["RATE"] != 0]
     # Removes rows where RATE is NaN
     minus_rate_nan = minus_rate_zero.dropna(subset=["RATE"])
     # Removes rows where AGE is NaN
@@ -50,6 +50,7 @@ def remove_zeroes_and_nans():
     return minus_age_nan
 
 def four_years_pre_legalization():
+    # From the remove zeroes and nans data this generates my pre legalization sample used for the calculations below
     scrubbed_data = remove_zeroes_and_nans()
     four_years_pre_legalization = scrubbed_data[(scrubbed_data["YEAR"] <= 2013) & 
                                  (scrubbed_data["YEAR"] >= 2010) &
@@ -67,6 +68,7 @@ def calc_pre_len_mean_variance_std():
     return pre_len, pre_mean, pre_variance, pre_std
 
 def four_years_post_legalization():
+    # From the remove zeroes and nans data this generates my post legalization sample used for the calculations below
     scrubbed_data = remove_zeroes_and_nans()
     four_years_post_legalization = scrubbed_data[(scrubbed_data["YEAR"] <= 2017) & 
                                  (scrubbed_data["YEAR"] >= 2014) &
@@ -84,6 +86,7 @@ def calc_post_len_mean_variance_std():
     return post_len, post_mean, post_variance, post_std
 
 def two_sided_ttest():
+    # Using both my pre and post samples this performs a Welches two tailed t-test
     data1 = four_years_pre_legalization()
     data2 = four_years_post_legalization()
     stat, p_value1 = stats.ttest_ind(data1["RATE"], data2["RATE"], equal_var=False)

@@ -35,9 +35,18 @@ As one final basic comparison I took a look at the rates for my specific age gro
     </div>
 <br>
 
-
 ## Has Legalization of Recreational Marijuana had a Measurable Impact?
+From my prior analysis it appears as though asthma hospitalization rates have actually decreased. In order to more confidently state that rates have decreased I removed the filters I had in place to return more aggregated data in order to increase my sample size before conducting a T-Test and finding a p-value. In removing those filters to look at data on the county-level for each gender, for each of the five age groups, and for all counties I discovered significant inconsistancies. Though there were some counties that had reported data for both genders and each of the five age groups many did not. I'll disccuss this furthur in my lessons learned section, but to be as inclusive as possible used all data that at least had a rate, a gender, and an age group.
+
+I chose to use Welches T-test because because both of my sample sizes and variances were unequal. My null hypothesis was that the means of both samples were equal and my alternate hypothesis is that they are not. I first calculated Welches T-statistic and then used welch satterwithe to calculate degrees of freedom. Finnally, I plotted the p-value Region, as shown below, and calculated the p-value.
+
 [Figure 1.4]
+
+With a p- value of 3.7040031153345865e-07 as shown above I was able to reject the null hypothesis. Once rejected I still needed to answer the question did it difinitivly decrease. To do this I plotted the probability dencisty function
+
+for each sample from my data sets normal dis pdf of 
+
+[Figure 1.5]
     <div align="center">
         <img src="images/Condenced_Distribution_of_Asthma_Hospitalization_Rates.png" width="" height="">
     </div>

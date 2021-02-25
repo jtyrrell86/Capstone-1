@@ -6,12 +6,14 @@ from math import sqrt
 from cleaning import statewide_high_level_filter, high_level_filter_arapahoe_county, high_level_filter_arapahoe_county_males, calc_pre_len_mean_variance_std, calc_post_len_mean_variance_std
 
 def statewide_high_level_line_plot(data):
+    # Generates
     fig, ax = plt.subplots(dpi=150)
     plt.plot(data["YEAR"], data["RATE"])
+    plt.grid()
     plt.axvline(x=2014, ls="--", color="green", label="Recreational Marijuana Legalization")
-    plt.title("Statewide Hospitalization Rates From 2010- 2017 for Both Genders and All Ages")
+    plt.title("Statewide Hospitalization Rates From 2010- 2017 \n for Both Genders and All Ages")
     plt.xlabel("Year")
-    plt.ylabel("Asthma Hospitalization Rate")
+    plt.ylabel("Asthma Hospitalization Rate per 10,000 People")
     plt.legend(loc="best", fontsize="x-small")
     plt.savefig("../images/Statewide_Hospitalization_Rates_From_2010_2017_for_Both_Genders_and_All_Ages.png")
     return plt
@@ -19,10 +21,11 @@ def statewide_high_level_line_plot(data):
 def high_level_filter_arapahoe_county_plot(data):
     fig, ax = plt.subplots(dpi=150)
     plt.plot(data["YEAR"], data["RATE"])
+    plt.grid()
     plt.axvline(x=2014, ls="--", color="green", label="Recreational Marijuana Legalization")
-    plt.title("Arapahoe County Hospitalization Rates From 2010- 2017 for Both Genders and All Ages")
+    plt.title("Arapahoe County Hospitalization Rates From 2010- 2017 \n for Both Genders and All Ages")
     plt.xlabel("Year")
-    plt.ylabel("Asthma Hospitalization Rate")
+    plt.ylabel("Asthma Hospitalization Rate per 10,000 People")
     plt.legend(loc="best", fontsize="x-small")
     plt.savefig("../images/Arapahoe_County_Hospitalization_Rates_From_2010_2017_for_Both_Genders_and_All_Ages.png")
     return plt
@@ -30,10 +33,11 @@ def high_level_filter_arapahoe_county_plot(data):
 def high_level_filter_arapahoe_county_males_plot(data):
     fig, ax = plt.subplots(dpi=150)
     plt.plot(data["YEAR"], data["RATE"])
+    plt.grid()
     plt.axvline(x=2014, ls="--", color="green", label="Recreational Marijuana Legalization")
-    plt.title("Arapahoe County Hospitalization Rates From 2010- 2017 for Males Aged 15- 34")
+    plt.title("Arapahoe County Hospitalization Rates From 2010- 2017 \n for Males Aged 15- 34")
     plt.xlabel("Year")
-    plt.ylabel("Asthma Hospitalization Rate")
+    plt.ylabel("Asthma Hospitalization Rate per 10,000 People")
     plt.legend(loc="best", fontsize="x-small")
     plt.savefig("../images/Arapahoe_County_Hospitalization_Rates_From_2010_2017_for_Males_Aged_15_to_34.png")
     return plt
@@ -48,8 +52,9 @@ def condenced_distribution_of_asthma_hospitalization_rates_plot(data1, data2):
     fig, ax = plt.subplots(dpi=150)
     pre_x = np.linspace(pre_mean - 3*pre_std, pre_mean + 3*pre_std, 100)
     post_x = np.linspace(post_mean - 3*post_std, post_mean + 3*post_std, 100)
+    plt.grid()
     plt.title("Distribution of Asthma Hospitalization Rates")
-    plt.xlabel("Hospitalization Rates")
+    plt.xlabel("Asthma Hospitalization Rate per 10,000 People")
     plt.ylabel("PDF")
     plt.axvline(x=pre_mean, ls="--", color="red", label=f"Pre- Mean: {round(pre_mean, 2)}")
     plt.axvline(x=post_mean, ls="--", color="blue", label=f"Post- Mean: {round(post_mean, 2)}")
