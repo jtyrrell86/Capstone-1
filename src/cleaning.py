@@ -83,6 +83,13 @@ def calc_post_len_mean_variance_std():
     post_std = sqrt(post_variance)
     return post_len, post_mean, post_variance, post_std
 
+def two_sided_ttest():
+    data1 = four_years_pre_legalization()
+    data2 = four_years_post_legalization()
+    stat, p_value1 = stats.ttest_ind(data1["RATE"], data2["RATE"], equal_var=False)
+    return stat, p_value1
+
+
 if __name__ == "__main__":
 
     # print(remove_zeroes_and_nans())
@@ -90,3 +97,4 @@ if __name__ == "__main__":
     # print(four_years_post_legalization())
     print(calc_pre_len_mean_variance_std())
     print(calc_post_len_mean_variance_std())
+    print(two_sided_ttest())
