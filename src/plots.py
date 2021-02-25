@@ -9,33 +9,33 @@ def statewide_high_level_line_plot(data):
     fig, ax = plt.subplots(dpi=150)
     plt.plot(data["YEAR"], data["RATE"])
     plt.axvline(x=2014, ls="--", color="green", label="Recreational Marijuana Legalization")
-    plt.title("Statewide Hospitalization Rates From 2010- 2018 for Both Genders and All Ages")
+    plt.title("Statewide Hospitalization Rates From 2010- 2017 for Both Genders and All Ages")
     plt.xlabel("Year")
     plt.ylabel("Asthma Hospitalization Rate")
     plt.legend(loc="best", fontsize="x-small")
-    plt.savefig("../images/Statewide_Hospitalization_Rates_From_2010_2018_for_Both_Genders_and_All_Ages.png")
+    plt.savefig("../images/Statewide_Hospitalization_Rates_From_2010_2017_for_Both_Genders_and_All_Ages.png")
     return plt
 
 def high_level_filter_arapahoe_county_plot(data):
     fig, ax = plt.subplots(dpi=150)
     plt.plot(data["YEAR"], data["RATE"])
     plt.axvline(x=2014, ls="--", color="green", label="Recreational Marijuana Legalization")
-    plt.title("Arapahoe County Hospitalization Rates From 2010- 2018 for Both Genders and All Ages")
+    plt.title("Arapahoe County Hospitalization Rates From 2010- 2017 for Both Genders and All Ages")
     plt.xlabel("Year")
     plt.ylabel("Asthma Hospitalization Rate")
     plt.legend(loc="best", fontsize="x-small")
-    plt.savefig("../images/Arapahoe_County_Hospitalization_Rates_From_2010_2018_for_Both_Genders_and_All_Ages.png")
+    plt.savefig("../images/Arapahoe_County_Hospitalization_Rates_From_2010_2017_for_Both_Genders_and_All_Ages.png")
     return plt
 
 def high_level_filter_arapahoe_county_males_plot(data):
     fig, ax = plt.subplots(dpi=150)
     plt.plot(data["YEAR"], data["RATE"])
     plt.axvline(x=2014, ls="--", color="green", label="Recreational Marijuana Legalization")
-    plt.title("Arapahoe County Hospitalization Rates From 2010- 2018 for Males Aged 15- 34")
+    plt.title("Arapahoe County Hospitalization Rates From 2010- 2017 for Males Aged 15- 34")
     plt.xlabel("Year")
     plt.ylabel("Asthma Hospitalization Rate")
     plt.legend(loc="best", fontsize="x-small")
-    plt.savefig("../images/Arapahoe_County_Hospitalization_Rates_From_2010_2018_for_Males_Aged_15_to_34.png")
+    plt.savefig("../images/Arapahoe_County_Hospitalization_Rates_From_2010_2017_for_Males_Aged_15_to_34.png")
     return plt
 
 def condenced_distribution_of_asthma_hospitalization_rates_plot(data1, data2):
