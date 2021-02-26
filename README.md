@@ -34,7 +34,7 @@ As a comparison I also took a look at the rates for both gender and all ages in 
 <br>
 
 ### What About the Trend for Males Aged 15 to 34 in Arapahoe County?
-As one final basic comparison, I took a look at the rates for my specific age group. Again, the results are almost identical.
+As one final basic comparison, I took a look at the rates for my specific age group. Again, the results are almost identical though they are much more erratic.
 
 [Figure 1.4]
     <div align="center">
@@ -73,7 +73,10 @@ While my analysis shows that asthma hospitalization rates post-legalization actu
 * No specific data on marijuana usage was analyzed.
 
 ## Areas for Improvement
-One particular comparison I would have liked to have done would be to further filter my pre and post data for only counties that included data from all both genders and each of the five age groups. This may have provided a more representative sample to look at.
+* Throughout the later half of my project I had it in my mind that my data was normally distributed which seemed plausible. It wasn't until 11 PM the night before my presentation as I was trying to check final items off my list that actually plotted the data on a histogram. It did not appear to be normally distributed. I decided not to redo all the work I had done, but for future projects I need to check the distribution before proceeding with a hypothesis test.
+
+* One particular comparison I would have liked to have done would be to further filter my pre and post data for only counties that included data from all both genders and each of the five age groups. This may have provided a more representative sample to look at.
+
 
 ## Sources
 1) https://data-cdphe.opendata.arcgis.com/datasets/colorado-epht-asthma-hospitalization-data/data
