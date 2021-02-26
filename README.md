@@ -1,15 +1,15 @@
 # Recreational Marijuana Legalization and Asthma Hospitalizations: Is their a correlation?
 ## Backround and Motivation {need to finish and cite}
-According to the CDC asthma is one of the most common long term diseases impacting children, though it can also effect adults. When an Asthma attack occurs it can cause wheezing, breathlessness, chest tightness, and coughing {anything about more serious conditions or maybe my experience with Brett}. Asthma attacks are brought on by asthma triggers of which tobacco smoke is one of the most commmon triggers.
+According to the CDC asthma is one of the most common long term diseases impacting children, though it can also effect adults. When an Asthma attack occurs it can cause wheezing, breathlessness, chest tightness, and coughing {anything about more serious conditions or maybe my experience with Brett}. Asthma attacks are brought on by asthma triggers of which tobacco smoke is one of the most commmon.
 
-With states around the country, including Colorado, legalizing both medical and recreational marijuana I wanted to see if it's legalization had any measurable impacts asthma hospitalization rates.
+With states around the country, including Colorado, legalizing recreational marijuana I wanted to see if it's legalization had any measurable impact asthma hospitalization rates.
 
 ## Data
-In order to answer the above question I looked at the Colorado Department of Public Health and Environment (CDPHE) Asthma Hospitalization Data available on <a href="https://data-cdphe.opendata.arcgis.com/datasets/colorado-epht-asthma-hospitalization-data/data">CDPHE's Open Data website</a>. This data set includes county-level and state data on rates of hospitalizations, due to diagnosis of asthma, among Colorado residents between 2004- 2018. In addition it is also broken down gender and five different age groups. This data was published by the Colorado Environmental Public Health Tracking project. {include this or somthing more about how the rates calculated? citation?} Retail sale of recreational marijuana was allowed starting on January 1st, 2014 so I chose to look at data four years before and four years after legalization.
+In order to answer the above question I looked at the Colorado Department of Public Health and Environment (CDPHE) Asthma Hospitalization Data available on <a href="https://data-cdphe.opendata.arcgis.com/datasets/colorado-epht-asthma-hospitalization-data/data">CDPHE's Open Data website</a>. This data set includes county-level and state data on rates of hospitalizations among Colorado residents between 2004- 2018. Hospitalization rates are calculated using discharges per 10,000 individuals. This dataset contains aggregated rates for both genders and all ages, but also breaks has those same rates broken down by gender and five different age groups. This data was published by the Colorado Environmental Public Health Tracking project. Retail sale of recreational marijuana was allowed starting on January 1st, 2014 so I chose to look at data four years before and four years after this date.
 
 ## Exploratory Data Analysis
 ### What Does the Statewide Trend Look Like?
-After importing my data into pandas, and doing some basic cleaning, my first goal was to look at only statewide data for both genders and all age groups. I was was surprised that out of more than 20,000 rows this only returned 8 data points to look at, but the trend being shown was interesting an unintutive. Though the rate did jump slightly in 2014, when legalization occured, the overall trend between 2010 and 2017 was a sharp decrease as shown below.
+After importing my data into pandas, and doing some basic cleaning, my first goal was to look at only statewide data for both genders and all age groups. I was surprised that out of more than 20,000 rows this only returned 8, but the trend being shown was interesting and unintutive. Though the rate did jump slightly in 2014, when legalization occured, the overall trend between 2010 and 2017 was a sharp decrease as shown below.
 
 [Figure 1.1]
     <div align="center">
@@ -18,7 +18,7 @@ After importing my data into pandas, and doing some basic cleaning, my first goa
 <br>
 
 ## What About the Trend in Just One County?
-As a comparison I also took a look at the rates for both gender and all ages in just Arapahoe county. I chose Arapahoe county because it's both one of the most populous counties in Colorado and the one I live in. As you can see below the trend is almost identical.
+As a comparison I also took a look at the rates for both gender and all ages in just Arapahoe county. I chose Arapahoe county because it is both one of the most populous counties in Colorado and the one I live in. As you can see below the trend is almost identical.
 
 [Figure 1.2]
     <div align="center">
@@ -26,7 +26,10 @@ As a comparison I also took a look at the rates for both gender and all ages in 
     </div>
 <br>
 
-# What About the Trend for Males Aged 15 to 34?
+# What About the Trend for Children Aged 0 to 4 in That County?
+{add my final graph here}
+
+# What About the Trend for Males Aged 15 to 34 in That County?
 As one final basic comparison I took a look at the rates for my specific age group. Again, the results are almost identical.
 
 [Figure 1.3]
@@ -36,21 +39,28 @@ As one final basic comparison I took a look at the rates for my specific age gro
 <br>
 
 ## Has Legalization of Recreational Marijuana had a Measurable Impact?
-From my prior analysis it appears as though asthma hospitalization rates have actually decreased. In order to more confidently state that rates have decreased I removed the filters I had in place to return more aggregated data in order to increase my sample size before conducting a T-Test and finding a p-value. In removing those filters to look at data on the county-level for each gender, for each of the five age groups, and for all counties I discovered significant inconsistancies. Though there were some counties that had reported data for both genders and each of the five age groups many did not. I'll disccuss this furthur in my lessons learned section, but to be as inclusive as possible used all data that at least had a rate, a gender, and an age group.
+From my prior analysis it appears as though asthma hospitalization rates have actually decreased. In order to more confidently state that rates have decreased a hypothesis test was performed under the following under the following conditions: 
 
-I chose to use Welches T-test because because both of my sample sizes and variances were unequal. My null hypothesis was that the means of both samples were equal and my alternate hypothesis is that they are not. I first calculated Welches T-statistic and then used welch satterwithe to calculate degrees of freedom. Finnally, I plotted the p-value Region, as shown below, and calculated the p-value.
+* **Null Hypthothesis(H0):** The rates did not change and thus sample means are the same
+* **Alternate Hypthothesis(HA):** The rates did  change
+* **Significance Threshold(alpha):** 0.05
 
-[Figure 1.4]
+Due to the limited number of data points that had been used in my prior analysis I instead used data from all counties, seperate genders, and the five different age groups. This required additional EDA as there were a significant number of zero and null values in the non aggregated data. Out of the more than 20,000 rows this left me with only 599 rows for the pre-legalization sample and and 518 for the post-legalization sample. Performing a two-tailed t-test on these two samples resulted in:
 
-With a p- value of 3.7040031153345865e-07 as shown above I was able to reject the null hypothesis. Once rejected I still needed to answer the question did it difinitivly decrease. To do this I plotted the probability dencisty function
+<b> p-value = 3.70e-07 </b>
+                                            
+The results of this t-test allowed me to reject the null hypothesis and confirm that asthma hospitalization rates did change.
 
-for each sample from my data sets normal dis pdf of 
+In order to confirm the decrease I saw in my prior analysis I plotted the PDF of both pre-legalization and post-legalization samples.
 
 [Figure 1.5]
     <div align="center">
         <img src="images/Condenced_Distribution_of_Asthma_Hospitalization_Rates.png" width="" height="">
     </div>
 <br>
+
+## Conclusion
+While my analysis shows that asthma hospitalization rates post-legalization actually fell it does not allow me to show any correlation betwen marijuana legalization and these rates. {more help with these last two sections}
 
 ## Lessons Learned
 The authors of this data specific warn against making inferences from this data about environmental changes.
