@@ -7,7 +7,10 @@ from cleaning import all_ages_both_genders_statewide, all_ages_both_genders_arap
 
 
 def all_ages_both_genders_statewide_plot(data):
-    # Generates
+    '''
+    Generates a plot showing asthma hospitalizations using statewide data,
+    for both genders, and all age groups.
+    '''
     fig, ax = plt.subplots(dpi=150)
     plt.plot(data["YEAR"], data["RATE"])
     plt.grid()
@@ -20,6 +23,10 @@ def all_ages_both_genders_statewide_plot(data):
     return plt
 
 def all_ages_both_genders_arapahoe_county_plot(data):
+    '''
+    Generates a plot showing asthma hospitalizations using data for Arapahoe county,
+    for both genders, and all age groups.
+    '''
     fig, ax = plt.subplots(dpi=150)
     plt.plot(data["YEAR"], data["RATE"])
     plt.grid()
@@ -32,6 +39,10 @@ def all_ages_both_genders_arapahoe_county_plot(data):
     return plt
 
 def child_both_genders_arapahoe_county_plot(data):
+    '''
+    Generates a plot showing asthma hospitalizations using data for Arapahoe county,
+    for both genders, and for children betweeen 0-4.
+    '''
     fig, ax = plt.subplots(dpi=150)
     plt.plot(data["YEAR"], data["RATE"])
     plt.grid()
@@ -44,6 +55,10 @@ def child_both_genders_arapahoe_county_plot(data):
     return plt
 
 def male_young_adult_to_adult_arapahoe_county_plot(data):
+    '''
+    Generates a plot showing asthma hospitalizations using data for Arapahoe county,
+    for males between 15-34.
+    '''
     fig, ax = plt.subplots(dpi=150)
     plt.plot(data["YEAR"], data["RATE"])
     plt.grid()
@@ -55,7 +70,11 @@ def male_young_adult_to_adult_arapahoe_county_plot(data):
     plt.savefig("../images/Arapahoe_County_Hospitalization_Rates_From_2010_2017_for_Males_Aged_15_to_34.png")
     return plt
 
-def condenced_distribution_of_asthma_hospitalization_rates_plot(data1, data2):
+def distribution_of_asthma_hospitalization_rates_plot(data1, data2):
+    '''
+    Plots the pdf of both the pre-legalization and post-legalization data for comparison.
+    it's also shows the mean of both samples.
+    '''
     pre_len, pre_mean, pre_variance, pre_std = data1
     post_len, post_mean, post_variance, post_std = data2
 
@@ -82,4 +101,4 @@ if __name__ == "__main__":
     all_ages_both_genders_arapahoe_county_plot(all_ages_both_genders_arapahoe_county())
     child_both_genders_arapahoe_county_plot(child_both_genders_arapahoe_county())
     male_young_adult_to_adult_arapahoe_county_plot(male_young_adult_to_adult_arapahoe_county())
-    condenced_distribution_of_asthma_hospitalization_rates_plot(calc_pre_len_mean_variance_std(), calc_post_len_mean_variance_std())
+    distribution_of_asthma_hospitalization_rates_plot(calc_pre_len_mean_variance_std(), calc_post_len_mean_variance_std())
