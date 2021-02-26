@@ -11,33 +11,41 @@ def remove_uneeded_columns(raw_data):
     return raw_data[["COUNTY", "RATE", "YEAR", "GENDER", "AGE"]]
 
 
-def statewide_high_level_filter():
+def all_ages_both_genders_statewide():
     # Filters the data for only statewide rates for both genders, all ages, and between 2010- 2017.
     data = remove_uneeded_columns(asthma_data)
-    county_filter = data[data["COUNTY"] == "Statewide"]
-    date_filter = county_filter[(county_filter["YEAR"] >= 2010) & (county_filter["YEAR"] <= 2017)]
-    age_filter = date_filter[date_filter["AGE"] == "All ages"]
-    gender_filter= age_filter[age_filter["GENDER"] == "Both genders"]
-    # gender_filter.to_csv("../data/statewide_high_level_data.csv")
-    return gender_filter
+    all_ages_both_genders_statewide = data[(data["COUNTY"] == "Statewide") &
+                                           ((data["YEAR"] >= 2010) & (data["YEAR"] <= 2017)) &
+                                           (data["AGE"] == "All ages") &
+                                           (data["GENDER"] == "Both genders")]
+    return all_ages_both_genders_statewide
  
-def high_level_filter_arapahoe_county():
+def all_ages_both_genders_arapahoe_county():
     # Filters the data for only Arapahoe County rates for both genders, all ages, and between 2010- 2017.
     data = remove_uneeded_columns(asthma_data)
-    county_filter_arapahoe = data[data["COUNTY"] == "Arapahoe"]
-    date_filter_arapahoe = county_filter_arapahoe[(county_filter_arapahoe["YEAR"] >= 2010) & (county_filter_arapahoe["YEAR"] <= 2017)]
-    age_filter_arapahoe = date_filter_arapahoe[date_filter_arapahoe["AGE"] == "All ages"]
-    gender_filter_arapahoe = age_filter_arapahoe[age_filter_arapahoe["GENDER"] == "Both genders"]
-    return gender_filter_arapahoe
+    all_ages_both_genders_arapahoe_county = data[(data["COUNTY"] == "Arapahoe") &
+                                                        ((data["YEAR"] >= 2010) & (data["YEAR"] <= 2017)) &
+                                                        (data["AGE"] == "All ages") &
+                                                        (data["GENDER"] == "Both genders")]
+    return all_ages_both_genders_arapahoe_county
 
-def high_level_filter_arapahoe_county_males():
+def child_both_genders_arapahoe_county():
     # Filters the data for only Arapahoe County rates for males age 15-34 and between 2010- 2017.
     data = remove_uneeded_columns(asthma_data)
-    county_filter_arapahoe = data[data["COUNTY"] == "Arapahoe"]
-    date_filter_arapahoe = county_filter_arapahoe[(county_filter_arapahoe["YEAR"] >= 2010) & (county_filter_arapahoe["YEAR"] <= 2017)]
-    age1_filter_arapahoe = date_filter_arapahoe[date_filter_arapahoe["AGE"] == "15-34 years old"]
-    male_filter_arapahoe = age1_filter_arapahoe[age1_filter_arapahoe["GENDER"] == "Male"]
-    return male_filter_arapahoe
+    child_both_genders_arapahoe_county = data[(data["COUNTY"] == "Arapahoe") &
+                                              ((data["YEAR"] >= 2010) & (data["YEAR"] <= 2017)) &
+                                              (data["AGE"] == "0-4 years old") &
+                                              (data["GENDER"] == "Both genders")]
+    return child_both_genders_arapahoe_county
+
+def male_young_adult_to_adult_arapahoe_county():
+    # Filters the data for only Arapahoe County rates for males age 15-34 and between 2010- 2017.
+    data = remove_uneeded_columns(asthma_data)
+    male_young_adult_to_adult_arapahoe_county = data[(data["COUNTY"] == "Arapahoe") &
+                                                     ((data["YEAR"] >= 2010) & (data["YEAR"] <= 2017)) &
+                                                     (data["AGE"] == "15-34 years old") &
+                                                     (data["GENDER"] == "Male")]
+    return male_young_adult_to_adult_arapahoe_county
 
 def remove_zeroes_and_nans():
     data = remove_uneeded_columns(asthma_data)
@@ -92,12 +100,14 @@ def two_sided_ttest():
     stat, p_value1 = stats.ttest_ind(data1["RATE"], data2["RATE"], equal_var=False)
     return stat, p_value1
 
-
 if __name__ == "__main__":
 
+    # print(all_ages_both_genders_statewide())
+    # print(all_ages_both_genders_arapahoe_county())
+    # print(child_both_genders_arapahoe_county())
+    # print(male_young_adult_to_adult_arapahoe_county())
     # print(remove_zeroes_and_nans())
-    # print(high_level_filter_arapahoe_county_males())
     # print(four_years_post_legalization())
-    print(calc_pre_len_mean_variance_std())
-    print(calc_post_len_mean_variance_std())
+    # print(calc_pre_len_mean_variance_std())
+    # print(calc_post_len_mean_variance_std())
     print(two_sided_ttest())

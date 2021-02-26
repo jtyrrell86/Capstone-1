@@ -27,12 +27,16 @@ As a comparison I also took a look at the rates for both gender and all ages in 
 <br>
 
 # What About the Trend for Children Aged 0 to 4 in That County?
-{add my final graph here}
+[Figure 1.3]
+    <div align="center">
+        <img src="images/Arapahoe_County_Hospitalization_Rates_From_2010_2017_for_Children_Aged_0_to_4.png" width="" height="">
+    </div>
+<br>
 
 # What About the Trend for Males Aged 15 to 34 in That County?
 As one final basic comparison I took a look at the rates for my specific age group. Again, the results are almost identical.
 
-[Figure 1.3]
+[Figure 1.4]
     <div align="center">
         <img src="images/Arapahoe_County_Hospitalization_Rates_From_2010_2017_for_Males_Aged_15_to_34.png" width="" height="">
     </div>

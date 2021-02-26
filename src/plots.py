@@ -3,9 +3,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy import stats
 from math import sqrt
-from cleaning import statewide_high_level_filter, high_level_filter_arapahoe_county, high_level_filter_arapahoe_county_males, calc_pre_len_mean_variance_std, calc_post_len_mean_variance_std
+from cleaning import all_ages_both_genders_statewide, all_ages_both_genders_arapahoe_county, child_both_genders_arapahoe_county, male_young_adult_to_adult_arapahoe_county, calc_pre_len_mean_variance_std, calc_post_len_mean_variance_std
 
-def statewide_high_level_line_plot(data):
+
+def all_ages_both_genders_statewide_plot(data):
     # Generates
     fig, ax = plt.subplots(dpi=150)
     plt.plot(data["YEAR"], data["RATE"])
@@ -18,7 +19,7 @@ def statewide_high_level_line_plot(data):
     plt.savefig("../images/Statewide_Hospitalization_Rates_From_2010_2017_for_Both_Genders_and_All_Ages.png")
     return plt
 
-def high_level_filter_arapahoe_county_plot(data):
+def all_ages_both_genders_arapahoe_county_plot(data):
     fig, ax = plt.subplots(dpi=150)
     plt.plot(data["YEAR"], data["RATE"])
     plt.grid()
@@ -30,7 +31,19 @@ def high_level_filter_arapahoe_county_plot(data):
     plt.savefig("../images/Arapahoe_County_Hospitalization_Rates_From_2010_2017_for_Both_Genders_and_All_Ages.png")
     return plt
 
-def high_level_filter_arapahoe_county_males_plot(data):
+def child_both_genders_arapahoe_county_plot(data):
+    fig, ax = plt.subplots(dpi=150)
+    plt.plot(data["YEAR"], data["RATE"])
+    plt.grid()
+    plt.axvline(x=2014, ls="--", color="green", label="Recreational Marijuana Legalization")
+    plt.title("Arapahoe County Hospitalization Rates From 2010- 2017 \n for Children Aged 0- 4")
+    plt.xlabel("Year")
+    plt.ylabel("Asthma Hospitalization Rate per 10,000 People")
+    plt.legend(loc="best", fontsize="x-small")
+    plt.savefig("../images/Arapahoe_County_Hospitalization_Rates_From_2010_2017_for_Children_Aged_0_to_4.png")
+    return plt
+
+def male_young_adult_to_adult_arapahoe_county_plot(data):
     fig, ax = plt.subplots(dpi=150)
     plt.plot(data["YEAR"], data["RATE"])
     plt.grid()
@@ -65,7 +78,8 @@ def condenced_distribution_of_asthma_hospitalization_rates_plot(data1, data2):
 
 
 if __name__ == "__main__":
-    statewide_high_level_line_plot(statewide_high_level_filter())
-    high_level_filter_arapahoe_county_plot(high_level_filter_arapahoe_county())
-    high_level_filter_arapahoe_county_males_plot(high_level_filter_arapahoe_county_males())
+    all_ages_both_genders_statewide_plot(all_ages_both_genders_statewide())
+    all_ages_both_genders_arapahoe_county_plot(all_ages_both_genders_arapahoe_county())
+    child_both_genders_arapahoe_county_plot(child_both_genders_arapahoe_county())
+    male_young_adult_to_adult_arapahoe_county_plot(male_young_adult_to_adult_arapahoe_county())
     condenced_distribution_of_asthma_hospitalization_rates_plot(calc_pre_len_mean_variance_std(), calc_post_len_mean_variance_std())
