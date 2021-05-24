@@ -1,4 +1,4 @@
-# Recreational Marijuana Legalization and Asthma Hospitalizations: Is there a correlation?
+# Is there a Correlation Between Marijuana Legalization and Asthma Hospitalizations
 ## Background and Motivation
 According to the CDC, asthma is one of the most common chronic diseases impacting children and adults. When an asthma attack occurs, it can cause wheezing, breathlessness, chest tightness, and coughing. Although asthma attacks are often short lived and treated at home with inhaled medications, occasionally the attacks become so serious they require a trip to the emergency room and admission to the hospital.  Asthma attacks are brought on by asthma triggers and smoke is one of the worst offenders. 
 
